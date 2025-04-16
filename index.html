@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/images/LUVID-LOGO--2.png">
+    <title>Luvid Technologies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="./assets/images/luvidlogo.jpg" alt="Luvid Technologies Logo">
+            </a>
+            <div class="nav-links">
+                <button class="menu-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#team">Team</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#contact">Contact</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="menu-overlay"></div>
+    <a href="https://wa.me/918590701815" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>We Engineer Your Digital Products</h1>
+            <p>Transforming ideas into exceptional digital experiences through cutting-edge technology and innovative solutions.</p>
+            <div class="cta-buttons">
+                <a href="schedule-demo.html" class="btn btn-primary" onclick="localStorage.setItem('theme', document.documentElement.getAttribute('data-theme'))">Talk to Us</a>
+                <a href="#services" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-intro" id="about">
+        <div class="container">
+            <div class="about-intro-content">
+                <h2>Who We Are</h2>
+                <p>At Luvid Technologies, we are passionate about building innovative digital solutions that drive business growth and enhance user experiences. With a strong foundation in cutting-edge technologies and a commitment to quality, we specialize in crafting web and mobile applications tailored to meet our clients' unique needs. Our team of creative thinkers and skilled developers works collaboratively to turn ideas into impactful digital products. At Luvid, we believe in delivering excellence, every time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Carousel Section -->
+    <section class="brand-carousel">
+        <div class="container">
+            <div class="brand-carousel-container">
+                <div class="brand-track">
+                    <div class="brand-item">
+                        <a href="#"><img src="./assets/images/mongodb.png" alt="MongoDB"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="./assets/images/postgres.png" alt="PostgreSQL" class="img-fluid" style="height: 120px;width: 180px;"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="./assets/images/react.png" alt="React" class="img-fluid" style="height: 120px;width: 160px;"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="./assets/images/reactnative.png" alt="React Native" class="img-fluid" style="height: 120px;width: 160px;"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="./assets/images/nodejs.png" alt="Node.js" class="img-fluid" style="height: 120px;width: 160px;"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="./assets/images/next.png" alt="Next.js" class="img-fluid" style="height: 120px;width: 160px;"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="./assets/images/express.png" alt="Express.js" class="img-fluid" style="height: 120px;width: 160px;"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="./assets/images/kafka.png" alt="Kafka" class="img-fluid" style="height: 120px;width: 200px;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header">
+                <h2>Our Services</h2>
+                <p>We offer full-cycle custom software development and consulting services for your project requirements and business needs.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>ERP</h3>
+                    <p>Enterprise Resource Planning (ERP) service provides a comprehensive solution that integrates various business processes into a unified system, enhancing productivity and decision-making.</p>
+                </div>
+                <div class="service-card">
+                    <h3>E-COMMERCE</h3>
+                    <p>We provide seamless, scalable, and secure platforms that enable businesses to sell products and services online effortlessly.</p>
+                </div>
+                <div class="service-card">
+                    <h3>LMS</h3>
+                    <p>Empower your organization with our state-of-the-art Learning Management System (LMS), designed to streamline training and education.</p>
+                </div>
+                <div class="service-card">
+                    <h3>CUSTOM BUSINESS SOLUTIONS</h3>
+                    <p>Our custom business offering tailored software and technology-driven strategies to enhance efficiency and drive growth.</p>
+                </div>
+                <div class="service-card">
+                    <h3>CLOUD SERVICE</h3>
+                    <p>We offer secure and flexible cloud solutions that enable businesses to store, manage, and access data from anywhere, anytime.</p>
+                </div>
+                <div class="service-card">
+                    <h3>ON-PREMISE PRIVATE CLOUDS</h3>
+                    <p>Our On-Premise Private Cloud solutions provide the perfect balance between flexibility and data sovereignty.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Explore our recent work and see how we've helped businesses transform their digital presence.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="./assets/images/image.webp" alt="Mistudiu">
+                    <div class="project-overlay">
+                        <h3>Mistudiu</h3>
+                        <p>An innovative educational platform designed to enhance learning experiences through interactive content and personalized study paths.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./assets/images/image.webp" alt="Delta Mascots">
+                    <div class="project-overlay">
+                        <h3>Delta Mascots</h3>
+                        <p>A comprehensive mascot management system that helps organizations create, manage, and deploy their brand mascots effectively.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./assets/images/image.webp" alt="Efic">
+                    <div class="project-overlay">
+                        <h3>Efic</h3>
+                        <p>An enterprise resource planning solution that streamlines business operations and enhances productivity through automation.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./assets/images/image.webp" alt="Retailflow">
+                    <div class="project-overlay">
+                        <h3>Retailflow</h3>
+                        <p>A retail management platform that optimizes inventory, sales, and customer engagement for modern retail businesses.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./assets/images/image.webp" alt="Oneform">
+                    <div class="project-overlay">
+                        <h3>Oneform</h3>
+                        <p>A unified form management system that simplifies data collection and processing across multiple departments.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="./assets/images/image.webp" alt="Otogadgets">
+                    <div class="project-overlay">
+                        <h3>Otogadgets</h3>
+                        <p>An e-commerce platform specializing in automotive gadgets and accessories with advanced search and recommendation features.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2 class="title w-600 mb--20">Meet Our Team</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-inner">
+                        <div class="team-image">
+                            <img src="https://doob-symfony.vercel.app/assets/images/team/team-04.jpg" alt="Sr Janen Sara">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-name">Sr Janen Sara</h3>
+                            <p class="team-role">Sr Product Designer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-inner">
+                        <div class="team-image">
+                            <img src="https://doob-symfony.vercel.app/assets/images/team/team-05.jpg" alt="Afsana Nila">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-name">Afsana Nila</h3>
+                            <p class="team-role">App Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-inner">
+                        <div class="team-image">
+                            <img src="https://doob-symfony.vercel.app/assets/images/team/team-06.jpg" alt="Afanan Sifa">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-name">Afanan Sifa</h3>
+                            <p class="team-role">Accounts Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-inner">
+                        <div class="team-image">
+                            <img src="https://doob-symfony.vercel.app/assets/images/team/team-04.jpg" alt="Afanan Sifa">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-name">Afanan Sifa</h3>
+                            <p class="team-role">Accounts Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-inner">
+                        <div class="team-image">
+                            <img src="./assets/images/abshar.jpg" alt="Muhammad Abshar">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-name">Muhammad Abshar</h3>
+                            <p class="team-role">Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-inner">
+                        <div class="team-image">
+                            <img src="./assets/images/najil.jpg" alt="Najil Rahman">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-name">Najil Rahman</h3>
+                            <p class="team-role">Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-inner">
+                        <div class="team-image">
+                            <img src="./assets/images/sabee.jpg" alt="Muhammed Sabeeh">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-name">Muhammed Sabeeh</h3>
+                            <p class="team-role">Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-inner">
+                        <div class="team-image">
+                            <img src="./assets/images/minsha.jpg" alt="Minsha">
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-name">Minsha</h3>
+                            <p class="team-role">Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <div class="swiper testimonials-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">"What I am primarily looking for with new projects is a fit on both a visual and aesthetic level as well as on a personal level with the client."</p>
+                                <div class="testimonial-author">
+                                    <h3>Darun Due</h3>
+                                    <span>Web Developer, USA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">"What I am primarily looking for with new projects is a fit on both a visual and aesthetic level as well as on a personal level with the client."</p>
+                                <div class="testimonial-author">
+                                    <h3>Mohima Ale</h3>
+                                    <span>App Developer, India</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p class="testimonial-text">"What I am primarily looking for with new projects is a fit on both a visual and aesthetic level as well as on a personal level with the client."</p>
+                                <div class="testimonial-author">
+                                    <h3>John Roni</h3>
+                                    <span>App Developer, Bangladesh</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose Luvid</h2>
+                    <p>With over 13 years of experience in digital product engineering, we've mastered the art of transforming complex challenges into elegant solutions.</p>
+                    <div class="strengths-grid">
+                        <div class="strength-item">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <h3>13+ Years Experience</h3>
+                                <p>Proven track record in digital transformation</p>
+                            </div>
+                        </div>
+                        <div class="strength-item">
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <h3>Global Clients</h3>
+                                <p>Serving businesses worldwide</p>
+                            </div>
+                        </div>
+                        <div class="strength-item">
+                            <i class="fas fa-sync"></i>
+                            <div>
+                                <h3>Agile Development</h3>
+                                <p>Flexible and efficient project delivery</p>
+                            </div>
+                        </div>
+                        <div class="strength-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <h3>Innovation-Driven</h3>
+                                <p>Cutting-edge solutions for modern challenges</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/600x400" alt="About Luvid" style="width: 100%; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>Have a project in mind? Let's discuss how we can help you achieve your goals.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3913.1845225250827!2d75.83155997402372!3d11.247832550323775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65bbe50ea0b7d%3A0xc4e01eaa6234847e!2sHiLITE%20Business%20Park%2C%20Poovangal%2C%20Pantheeramkavu%2C%20Kerala%20673014!5e0!3m2!1sen!2sin!4v1744355485346!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <h2>Luvid</h2>
+                    </div>
+                    <p>Transforming ideas into exceptional digital experiences through cutting-edge technology and innovative solutions.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="mailto:luvidtechnologies@gmail.com"><i class="fas fa-envelope"></i> luvidtechnologies@gmail.com</a></li>
+                        <li><a href="tel:+918590701815"><i class="fas fa-phone"></i> +91 85907 01815</a></li>
+                        <li><a href="https://maps.google.com/?q=Hilite+Business+Park+State+Highway+28,+Palazhi,+Kozhikode,+Pantheeramkavu,+Kerala+673014" target="_blank"><i class="fas fa-map-marker-alt"></i> Hilite Business Park, Kozhikode</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Luvid. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

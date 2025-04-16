@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - Luvid Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Remove navbar background and fixed positioning */
+        .navbar {
+            background: transparent !important;
+            box-shadow: none !important;
+            position: relative !important;
+        }
+
+        /* Schedule Demo Page Specific Styles */
+        .schedule-demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .schedule-form {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .schedule-form h2 {
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .schedule-form p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .date-picker {
+            margin-bottom: 30px;
+        }
+
+        .calendar {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .calendar-nav button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+
+        .calendar-day {
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day:hover {
+            background: var(--hover-bg);
+        }
+
+        /* Calendar day selected state */
+        .calendar-day.selected {
+            background: var(--accent-color);
+            color: #fff;
+        }
+
+        /* Dark theme selected date */
+        :root[data-theme="dark"] .calendar-day.selected {
+            background: #ffffff !important;
+            color: #000000 !important;
+        }
+
+        /* Light theme selected date */
+        :root[data-theme="light"] .calendar-day.selected {
+            background: #000000 !important;
+            color: #ffffff !important;
+        }
+
+        .demo-info {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .demo-info h2 {
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+
+        .demo-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .demo-feature i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .demo-feature-text {
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .demo-image {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .demo-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 992px) {
+            .schedule-demo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .schedule-form,
+            .demo-info {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .schedule-form,
+            .demo-info {
+                padding: 20px;
+            }
+        }
+
+        .calendar-selects {
+            display: flex;
+            gap: 10px;
+        }
+
+        .calendar-selects select {
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        /* Next Button Styles */
+        .schedule-next-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Light Theme Styles */
+        :root[data-theme="light"] .schedule-next-btn {
+            background: #000000;
+            color: #ffffff;
+        }
+
+        :root[data-theme="light"] .schedule-next-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            border: 1px solid #000000;
+        }
+
+        /* Dark Theme Styles */
+        :root[data-theme="dark"] .schedule-next-btn {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        :root[data-theme="dark"] .schedule-next-btn:hover {
+            background: #000000;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+
+        .calendar-day.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+            color: var(--text-secondary);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .phone-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .phone-input select {
+            width: 100px;
+        }
+
+        .phone-input input {
+            flex: 1;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-top: 4px;
+        }
+
+        .checkbox-group label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .checkbox-group a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .back-button {
+            margin-top: 25px;
+            background: transparent;
+            color: var(--text-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            line-height: 1;
+            font-size: 30px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        /* Hide form initially */
+        #scheduleForm {
+            display: none;
+        }
+
+        /* Toast Styles */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            padding: 12px 24px;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 1000;
+            border: 1px solid var(--border-color);
+            animation: slideInFromTop 0.3s ease;
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Toast Container -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="./assets/images/luvidlogo.jpg" alt="Luvid Technologies Logo">
+            </a>
+            <div class="nav-links">
+                <button class="menu-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <div class="menu-overlay"></div>
+    <a href="https://wa.me/918590701815" class="whatsapp-button" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Schedule Demo Section -->
+    <div class="schedule-demo-container">
+        <div class="schedule-form">
+            <h2>Schedule demo</h2>
+            <p>Pick a time to talk to one of our experts about your organization's unique needs and understand Luvid</p>
+            
+            <!-- Calendar View -->
+            <div id="calendarView">
+                <div class="date-picker">
+                    <h3>Date</h3>
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <div class="calendar-selects">
+                                <select id="monthSelect" class="form-control">
+                                    <option value="0">January</option>
+                                    <option value="1">February</option>
+                                    <option value="2">March</option>
+                                    <option value="3">April</option>
+                                    <option value="4">May</option>
+                                    <option value="5">June</option>
+                                    <option value="6">July</option>
+                                    <option value="7">August</option>
+                                    <option value="8">September</option>
+                                    <option value="9">October</option>
+                                    <option value="10">November</option>
+                                    <option value="11">December</option>
+                                </select>
+                                <select id="yearSelect" class="form-control">
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                </select>
+                            </div>
+                            <div class="calendar-nav">
+                                <button class="prev-month"><i class="fas fa-chevron-left"></i></button>
+                                <button class="next-month"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="calendar-grid">
+                            <!-- Calendar days will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+                <button class="schedule-next-btn">Next</button>
+            </div>
+
+            <!-- Form View -->
+            <div id="scheduleForm">
+                <div class="form-group">
+                    <label for="fullName">Name</label>
+                    <input type="text" id="fullName" placeholder="Enter Full Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="workEmail">Company email</label>
+                    <input type="email" id="workEmail" placeholder="Enter Work Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Phone number</label>
+                    <input type="tel" id="phoneNumber" placeholder="Enter Phone Number">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consent">
+                    <label for="consent">We would love to keep you updated with information on resources, products and services from Luvid. By ticking the box, you agree to be contacted by us. <a href="#" target="_blank">Privacy Policy</a></label>
+                </div>
+
+                <div class="button-group">
+                    <button class="back-button" onclick="showCalendarView()">&lt;</button>
+                    <button class="schedule-next-btn" onclick="submitForm()">Schedule Meeting</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-info">
+            <h2>What does our demo cover?</h2>
+            
+            <div class="demo-feature">
+                <i class="fas fa-check-circle"></i>
+                <div class="demo-feature-text">
+                    A customized tour of Luvid Technologies, specific to your use case.
+                </div>
+            </div>
+
+            <div class="demo-feature">
+                <i class="fas fa-check-circle"></i>
+                <div class="demo-feature-text">
+                    An opportunity to get specific questions about the platform answered
+                </div>
+            </div>
+
+            <div class="demo-feature">
+                <i class="fas fa-check-circle"></i>
+                <div class="demo-feature-text">
+                    An insight into the help and support you will receive while you are at Luvid
+                </div>
+            </div>
+
+            <div class="demo-image">
+                <img src="https://img.freepik.com/free-photo/person-working-html-computer_23-2150038840.jpg?t=st=1744789826~exp=1744793426~hmac=eb361855b4e72e91e069acfcff8a223f3f3d385f09be5f5f32b3deff2dc43051&w=996" alt="Luvid Technologies Supported Devices">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toast functionality
+        function showToast(message, duration = 3000) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, duration);
+        }
+
+        // Check and apply the saved theme on page load
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        const themeIcon = document.querySelector('.theme-toggle i');
+        if (themeIcon) {
+            themeIcon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+
+        // Calendar functionality
+        const monthSelect = document.getElementById('monthSelect');
+        const yearSelect = document.getElementById('yearSelect');
+        const currentDate = new Date();
+
+        // Set initial values for month and year
+        monthSelect.value = currentDate.getMonth();
+        yearSelect.value = currentDate.getFullYear();
+
+        function isDateDisabled(year, month, day) {
+            const checkDate = new Date(year, month, day);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            return checkDate < today;
+        }
+
+        function selectDate(element, year, month, day) {
+            if (isDateDisabled(year, month, day)) {
+                return;
+            }
+            document.querySelectorAll('.calendar-day').forEach(day => {
+                day.classList.remove('selected');
+            });
+            element.classList.add('selected');
+        }
+
+        function generateCalendar(year, month) {
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const calendarGrid = document.querySelector('.calendar-grid');
+            calendarGrid.innerHTML = '';
+
+            // Add day headers
+            const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+            days.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'calendar-day header';
+                dayHeader.textContent = day;
+                calendarGrid.appendChild(dayHeader);
+            });
+
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day empty';
+                calendarGrid.appendChild(emptyDay);
+            }
+
+            // Add days of the month
+            for (let day = 1; day <= lastDay.getDate(); day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                
+                // Check if date should be disabled
+                if (isDateDisabled(year, month, day)) {
+                    dayElement.classList.add('disabled');
+                }
+                
+                dayElement.textContent = day;
+                dayElement.addEventListener('click', () => selectDate(dayElement, year, month, day));
+                calendarGrid.appendChild(dayElement);
+            }
+
+            // Disable month/year selections for past dates
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const currentMonth = today.getMonth();
+
+            // Disable past months in current year
+            Array.from(monthSelect.options).forEach(option => {
+                const monthValue = parseInt(option.value);
+                option.disabled = yearSelect.value == currentYear && monthValue < currentMonth;
+            });
+
+            // Disable past years
+            Array.from(yearSelect.options).forEach(option => {
+                option.disabled = parseInt(option.value) < currentYear;
+            });
+        }
+
+        // Update calendar when month or year changes
+        monthSelect.addEventListener('change', () => {
+            generateCalendar(parseInt(yearSelect.value), parseInt(monthSelect.value));
+        });
+
+        yearSelect.addEventListener('change', () => {
+            generateCalendar(parseInt(yearSelect.value), parseInt(monthSelect.value));
+        });
+
+        // Navigation buttons
+        document.querySelector('.prev-month').addEventListener('click', () => {
+            let newMonth = parseInt(monthSelect.value) - 1;
+            let newYear = parseInt(yearSelect.value);
+            
+            if (newMonth < 0) {
+                newMonth = 11;
+                newYear--;
+            }
+
+            // Check if we're trying to navigate to a past month
+            const today = new Date();
+            if (newYear < today.getFullYear() || 
+                (newYear === today.getFullYear() && newMonth < today.getMonth())) {
+                return;
+            }
+            
+            monthSelect.value = newMonth;
+            yearSelect.value = newYear;
+            generateCalendar(newYear, newMonth);
+        });
+
+        document.querySelector('.next-month').addEventListener('click', () => {
+            let newMonth = parseInt(monthSelect.value) + 1;
+            let newYear = parseInt(yearSelect.value);
+            
+            if (newMonth > 11) {
+                newMonth = 0;
+                newYear++;
+            }
+            
+            monthSelect.value = newMonth;
+            yearSelect.value = newYear;
+            generateCalendar(newYear, newMonth);
+        });
+
+        // Initialize calendar
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+
+        // Next button functionality
+        document.querySelector('.schedule-next-btn').addEventListener('click', () => {
+            const selectedDate = document.querySelector('.calendar-day.selected');
+            
+            if (!selectedDate || selectedDate.classList.contains('disabled')) {
+                showToast('Please select a valid date before proceeding.');
+                return;
+            }
+            
+            showFormView();
+        });
+
+        function showFormView() {
+            document.getElementById('calendarView').style.display = 'none';
+            document.getElementById('scheduleForm').style.display = 'block';
+        }
+
+        function showCalendarView() {
+            document.getElementById('calendarView').style.display = 'block';
+            document.getElementById('scheduleForm').style.display = 'none';
+        }
+
+        function submitForm() {
+            // Get all form values
+            const formData = {
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('workEmail').value,
+                phone: document.getElementById('phoneNumber').value,
+                consent: document.getElementById('consent').checked,
+                selectedDate: `${yearSelect.value}-${parseInt(monthSelect.value) + 1}-${document.querySelector('.calendar-day.selected').textContent}`
+            };
+
+            // Validate form
+            if (!formData.name || !formData.email || !formData.phone) {
+                showToast('Please fill in all required fields.');
+                return;
+            }
+
+            // Log form data (replace with your form submission logic)
+            console.log('Form Data:', formData);
+            showToast('Form submitted successfully!');
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html> 
