@@ -152,20 +152,34 @@
         @media (max-width: 992px) {
             .schedule-demo-container {
                 grid-template-columns: 1fr;
+                max-width: 600px;
             }
         }
 
         @media (max-width: 768px) {
+            .schedule-demo-container {
+                padding: 15px;
+                max-width: 100%;
+            }
+
             .schedule-form,
             .demo-info {
-                padding: 30px;
+                padding: 25px;
             }
         }
 
         @media (max-width: 576px) {
+            .schedule-demo-container {
+                padding: 10px;
+            }
+
             .schedule-form,
             .demo-info {
                 padding: 20px;
+            }
+
+            .calendar {
+                padding: 15px;
             }
         }
 
@@ -361,16 +375,9 @@
                 <img src="./assets/images/luvidlogo.jpg" alt="Luvid Technologies Logo">
             </a>
             <div class="nav-links">
-                <button class="menu-close">
-                    <i class="fas fa-times"></i>
-                </button>
             </div>
-            <button class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </nav>
-    <div class="menu-overlay"></div>
     <a href="https://wa.me/918590701815" class="whatsapp-button" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
