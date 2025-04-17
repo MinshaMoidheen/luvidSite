@@ -105,7 +105,7 @@ body {
 }
 
 .nav-links a.active {
-    color: var(--accent-color);
+    color: var(--text-color);
     position: relative;
 }
 
@@ -119,6 +119,19 @@ body {
     background-color: var(--accent-color);
     transform: scaleX(1);
     transition: transform 0.3s ease;
+}
+
+/* Dark theme specific styles */
+:root[data-theme="dark"] .nav-links a {
+    color: #ffffff;
+}
+
+:root[data-theme="dark"] .nav-links a.active {
+    color: #ffffff;
+}
+
+:root[data-theme="dark"] .nav-links a:hover {
+    color: var(--accent-color);
 }
 
 .container {
