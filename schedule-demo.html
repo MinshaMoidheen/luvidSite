@@ -167,6 +167,12 @@
             .demo-info {
                 padding: 25px;
             }
+
+            .form-check-input {
+                width: 20px;
+                height: 20px;
+                margin-top: 0.3rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -445,9 +451,11 @@
                     <input type="tel" id="phoneNumber" placeholder="Enter Phone Number">
                 </div>
 
-                <div class="checkbox-group">
-                    <input type="checkbox" id="consent">
-                    <label for="consent">We would love to keep you updated with information on resources, products and services from Luvid. By ticking the box, you agree to be contacted by us. <a href="#" target="_blank">Privacy Policy</a></label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="privacyPolicy" required>
+                    <label class="form-check-label" for="privacyPolicy">
+                        I agree with the privacy policy
+                    </label>
                 </div>
 
                 <div class="button-group">
@@ -663,7 +671,7 @@
                 name: document.getElementById('fullName').value,
                 email: document.getElementById('workEmail').value,
                 phone: document.getElementById('phoneNumber').value,
-                consent: document.getElementById('consent').checked,
+                consent: document.getElementById('privacyPolicy').checked,
                 selectedDate: `${yearSelect.value}-${parseInt(monthSelect.value) + 1}-${document.querySelector('.calendar-day.selected').textContent}`
             };
 
