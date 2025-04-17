@@ -1053,6 +1053,10 @@ body {
     background-color: #f5f5f5;
 }
 
+:root[data-theme="light"] .footer-logo .logo img {
+    content: url('./assets/images/luvidlogo2.jpg');
+}
+
 .footer-content {
     display: flex;
     justify-content: space-between;
