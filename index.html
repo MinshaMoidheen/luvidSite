@@ -27,6 +27,7 @@
                 <a href="#projects">Projects</a>
                 <a href="#team">Team</a>
                 <a href="#testimonials">Testimonials</a>
+                <a href="#careers">Careers</a>
                 <a href="#contact">Contact</a>
                 <button class="theme-toggle" id="themeToggle">
                     <i class="fas fa-sun"></i>
@@ -44,6 +45,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="video-background">
+            <video autoplay muted loop playsinline>
+                <source src="https://videocdn.cdnpk.net/videos/8d741b1b-cf4f-4471-b603-152da6e035ba/horizontal/previews/clear/large.mp4?token=exp=1744869125~hmac=d339ce38c1698d14be105984611d4a4f3e255c6f6cc1f390f0aeec65ee28f1cd" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
         <div class="hero-content">
             <h1>We Engineer Your Digital Products</h1>
             <p>Transforming ideas into exceptional digital experiences through cutting-edge technology and innovative solutions.</p>
@@ -333,50 +340,119 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about">
+    <!-- Careers Section -->
+    <section class="careers" id="careers">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Why Choose Luvid</h2>
-                    <p>With over 13 years of experience in digital product engineering, we've mastered the art of transforming complex challenges into elegant solutions.</p>
-                    <div class="strengths-grid">
-                        <div class="strength-item">
-                            <i class="fas fa-award"></i>
-                            <div>
-                                <h3>13+ Years Experience</h3>
-                                <p>Proven track record in digital transformation</p>
-                            </div>
-                        </div>
-                        <div class="strength-item">
-                            <i class="fas fa-globe"></i>
-                            <div>
-                                <h3>Global Clients</h3>
-                                <p>Serving businesses worldwide</p>
-                            </div>
-                        </div>
-                        <div class="strength-item">
-                            <i class="fas fa-sync"></i>
-                            <div>
-                                <h3>Agile Development</h3>
-                                <p>Flexible and efficient project delivery</p>
-                            </div>
-                        </div>
-                        <div class="strength-item">
-                            <i class="fas fa-lightbulb"></i>
-                            <div>
-                                <h3>Innovation-Driven</h3>
-                                <p>Cutting-edge solutions for modern challenges</p>
-                            </div>
-                        </div>
+            <div class="section-header">
+                <h2>Join Our Team</h2>
+                <p>Be part of our journey in creating innovative digital solutions. We're always looking for talented individuals to join our team.</p>
+            </div>
+            <div class="careers-grid">
+                <div class="career-card">
+                    <h3>Software Developer</h3>
+                    <p>Full-time | Remote/On-site</p>
+                    <div class="requirements">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Strong proficiency in JavaScript/TypeScript</li>
+                            <li>Experience with React/React Native</li>
+                            <li>Knowledge of Node.js and Express</li>
+                            <li>Understanding of RESTful APIs</li>
+                        </ul>
                     </div>
+                    <a href="mailto:careers@luvidtechnologies.com" class="apply-btn">Apply Now</a>
                 </div>
-                <div class="about-image">
-                    <img src="https://via.placeholder.com/600x400" alt="About Luvid" style="width: 100%; border-radius: 10px;">
+                <div class="career-card">
+                    <h3>UI/UX Designer</h3>
+                    <p>Full-time | Remote/On-site</p>
+                    <div class="requirements">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Proficiency in design tools (Figma, Adobe XD)</li>
+                            <li>Strong portfolio of UI/UX work</li>
+                            <li>Understanding of user-centered design</li>
+                            <li>Experience with responsive design</li>
+                        </ul>
+                    </div>
+                    <a href="mailto:careers@luvidtechnologies.com" class="apply-btn">Apply Now</a>
+                </div>
+                <div class="career-card">
+                    <h3>DevOps Engineer</h3>
+                    <p>Full-time | Remote/On-site</p>
+                    <div class="requirements">
+                        <h4>Requirements:</h4>
+                        <ul>
+                            <li>Experience with cloud platforms (AWS/Azure)</li>
+                            <li>Knowledge of CI/CD pipelines</li>
+                            <li>Understanding of containerization (Docker)</li>
+                            <li>Scripting skills (Bash/Python)</li>
+                        </ul>
+                    </div>
+                    <a href="mailto:careers@luvidtechnologies.com" class="apply-btn">Apply Now</a>
+                </div>
+            </div>
+            <div class="careers-benefits">
+                <h3>Why Work With Us?</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <i class="fas fa-code"></i>
+                        <h4>Cutting-edge Technology</h4>
+                        <p>Work with the latest technologies and tools</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-users"></i>
+                        <h4>Collaborative Environment</h4>
+                        <p>Join a team of passionate professionals</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Learning & Growth</h4>
+                        <p>Continuous learning and development opportunities</p>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-balance-scale"></i>
+                        <h4>Work-Life Balance</h4>
+                        <p>Flexible working hours and remote options</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Application Modal -->
+    <div class="modal" id="applicationModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Job Application</h2>
+            <form id="applicationForm">
+                <div class="form-group">
+                    <label for="applicantName">Full Name</label>
+                    <input type="text" id="applicantName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="applicantEmail">Email</label>
+                    <input type="email" id="applicantEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="applicantPhone">Phone Number</label>
+                    <input type="tel" id="applicantPhone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="applicantQualification">Highest Qualification</label>
+                    <input type="text" id="applicantQualification" name="qualification" required>
+                </div>
+                <div class="form-group">
+                    <label for="applicantSkills">Skills (comma separated)</label>
+                    <textarea id="applicantSkills" name="skills" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="cvUpload">Upload CV (PDF only)</label>
+                    <input type="file" id="cvUpload" name="cv" accept=".pdf" required>
+                </div>
+                <button type="submit" class="submit-application">Submit Application</button>
+            </form>
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
@@ -449,6 +525,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span class="toast-message">Application submitted successfully!</span>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>

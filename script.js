@@ -420,4 +420,130 @@ function animateSectionTitles() {
 window.addEventListener('scroll', animateSectionTitles);
 
 // Initial check in case sections are already in view
-animateSectionTitles(); 
+animateSectionTitles();
+
+// Application Modal Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('applicationModal');
+    const closeModal = document.querySelector('.close-modal');
+    const applyButtons = document.querySelectorAll('.apply-btn');
+    const applicationForm = document.getElementById('applicationForm');
+    const toast = document.getElementById('toast');
+
+    // Open modal when Apply Now button is clicked
+    applyButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    // Close modal when X is clicked
+    closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Show toast notification
+    function showToast() {
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    // Handle form submission
+    applicationForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(applicationForm);
+        const data = Object.fromEntries(formData.entries());
+        
+        // Here you would typically send the data to your server
+        console.log('Application submitted:', data);
+        
+        // Show toast notification
+        showToast();
+        
+        // Close modal and reset form
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        applicationForm.reset();
+    });
+});
+
+// Careers Section Animation
+const careersHeader = document.querySelector('.careers .section-header');
+
+function animateCareersHeader() {
+    const careersHeaderPosition = careersHeader.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.3;
+
+    if (careersHeaderPosition < screenPosition) {
+        // Animate the careers header title
+        anime({
+            targets: '.careers .section-header h2',
+            translateY: [-50, 0],
+            opacity: [0, 1],
+            duration: 1200,
+            easing: 'easeOutQuart'
+        });
+
+        // Animate the careers header paragraph
+        anime({
+            targets: '.careers .section-header p',
+            translateY: [-30, 0],
+            opacity: [0, 1],
+            duration: 1200,
+            easing: 'easeOutQuart',
+            delay: 300
+        });
+
+        // Remove the scroll event listener after animation
+        window.removeEventListener('scroll', animateCareersHeader);
+    }
+}
+
+// Add scroll event listener for careers header animation
+window.addEventListener('scroll', animateCareersHeader);
+
+// Initial check in case the section is already in view
+animateCareersHeader();
+
+// Testimonials Section Animation
+const testimonialsTitle = document.querySelector('.testimonials .section-title');
+
+function animateTestimonialsTitle() {
+    const testimonialsTitlePosition = testimonialsTitle.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.3;
+
+    if (testimonialsTitlePosition < screenPosition) {
+        // Animate the testimonials title
+        anime({
+            targets: '.testimonials .section-title',
+            translateX: [-100, 0],
+            opacity: [0, 1],
+            duration: 1200,
+            easing: 'easeOutQuart'
+        });
+
+        // Remove the scroll event listener after animation
+        window.removeEventListener('scroll', animateTestimonialsTitle);
+    }
+}
+
+// Add scroll event listener for testimonials title animation
+window.addEventListener('scroll', animateTestimonialsTitle);
+
+// Initial check in case the section is already in view
+animateTestimonialsTitle(); 
