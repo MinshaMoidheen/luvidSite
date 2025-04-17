@@ -1,15 +1,26 @@
 // Theme Toggle
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
+const logo = document.querySelector('.navbar .logo img');
 
 // Check for saved theme preference
 const savedTheme = localStorage.getItem('theme') || 'dark';
 html.setAttribute('data-theme', savedTheme);
+updateLogoImage(savedTheme);
 
 // Update theme toggle icon
 function updateThemeIcon() {
     const isDark = html.getAttribute('data-theme') === 'dark';
     themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+}
+
+// Update logo image based on theme
+function updateLogoImage(theme) {
+    if (theme === 'light') {
+        logo.src = './assets/images/luvidlogo2.jpg';
+    } else {
+        logo.src = './assets/images/luvidlogo.jpg';
+    }
 }
 
 // Initialize theme icon
@@ -23,6 +34,7 @@ themeToggle.addEventListener('click', () => {
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon();
+    updateLogoImage(newTheme);
     
     // Force a reflow to ensure styles are applied
     void html.offsetWidth;

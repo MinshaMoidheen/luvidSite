@@ -58,7 +58,7 @@ body {
     left: 0;
     right: 0;
     background-color: #000000;
-    padding: 20px 0;
+    padding: 5px 0;
     z-index: 1000;
 }
 
@@ -217,7 +217,9 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
-    margin-right: 15px;
+    margin: 3px 15px 0 0;
+    text-align: center;
+    display: inline-block;
 }
 
 .hero .btn-secondary {
@@ -397,8 +399,44 @@ body {
 
 /* Projects Section */
 .projects {
-    padding: 100px 0;
-    background-color: var(--primary-color);
+    padding: 50px 0 50px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Light theme background for projects */
+:root[data-theme="light"] .projects {
+    background-color: #e0e0e0 !important;
+}
+
+.projects .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Hide video background in both themes for projects */
+.projects .video-background {
+    display: none;
+}
+
+.projects .video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.projects .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
 }
 
 .projects-grid {
@@ -459,12 +497,55 @@ body {
 
 /* Team Section */
 .team {
-    padding: 30px 0;
-    background-color: var(--primary-color);
+    padding: 50px 0;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
 }
 
-.team .section-title {
-    margin-bottom: 30px;
+/* Light theme background for team */
+:root[data-theme="light"] .team {
+    background-color: #e0e0e0 !important;
+}
+
+.team .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Hide video background in both themes for team */
+.team .video-background {
+    display: none;
+}
+
+.team .video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+/* Ensure content stays above video */
+.team .container {
+    position: relative;
+    z-index: 2;
+}
+
+.team .section-header {
+    margin-bottom: 10px;
 }
 
 .team .title {
@@ -530,11 +611,21 @@ body {
 
 /* Light Theme Team Styles */
 :root[data-theme="light"] .team {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #e0e0e0 !important;
 }
 
-:root[data-theme="light"] .team-inner {
-    background-color: #ffffff;
+:root[data-theme="light"] .team .section-header {
+    margin-top: 20px;
+}
+
+:root[data-theme="light"] .team .section-title {
+    margin-top: 10px;
+    color: #333333;
+}
+
+:root[data-theme="light"] .team .team-name,
+:root[data-theme="light"] .team .team-role {
+    color: #333333;
 }
 
 /* Dark Theme Team Styles */
@@ -548,7 +639,7 @@ body {
 
 /* Contact Section */
 .contact {
-    padding: 100px 0 30px 0;
+    padding: 60px 0;
     background-color: var(--bg-secondary);
 }
 
@@ -613,7 +704,7 @@ body {
 
 /* Testimonials Section */
 .testimonials {
-    padding: 20px 0 100px 0;
+    padding: 20px 0 50px 0;
     background-color: var(--primary-color);
     overflow: hidden;
 }
@@ -892,14 +983,15 @@ body {
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    margin-top: 50px;
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .contact-form {
     background-color: rgb(39, 39, 39);
-    padding: 40px;
+    padding: 30px;
     border-radius: 10px;
+    height: fit-content;
 }
 
 .form-group {
@@ -952,8 +1044,13 @@ body {
 /* Footer Styles */
 .footer {
     background-color: var(--bg-color);
-    padding: 60px 0 20px;
+    padding: 40px 0 20px;
     color: var(--text-color);
+}
+
+/* Light theme specific footer styles */
+:root[data-theme="light"] .footer {
+    background-color: #f5f5f5;
 }
 
 .footer-content {
@@ -975,9 +1072,14 @@ body {
     min-width: 200px;
 }
 
-.footer-logo h2 {
-    color: var(--text-color);
+.footer-logo {
     margin-bottom: 20px;
+}
+
+.footer-logo .logo img {
+    height: 50px;
+    width: auto;
+    transition: all 0.3s ease;
 }
 
 .footer-about p {
@@ -1058,6 +1160,16 @@ body {
     .footer-links {
         width: 100%;
         min-width: auto;
+    }
+
+    .footer-logo .logo img {
+        height: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-logo .logo img {
+        height: 35px;
     }
 }
 
@@ -1704,10 +1816,14 @@ body {
     transform: scale(1.1);
 }
 
-/* Light Theme Specific Styles */
+/* Light theme specific styles */
 :root[data-theme="light"] .navbar {
-    background-color: var(--primary-color);
+    background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="light"] .navbar .logo img {
+    filter: brightness(0); /* Makes the logo black in light theme */
 }
 
 :root[data-theme="light"] .nav-links a {
@@ -1892,14 +2008,14 @@ body {
 /* Map Container Styles */
 .map-container {
     background-color: var(--bg-primary);
-    padding: 40px;
-    height: 100%;
+    padding: 30px;
+    height: fit-content;
 }
 
 .map-container iframe {
     width: 100%;
     height: 100%;
-    min-height: 500px;
+    min-height: 380px;
     border: none;
 }
 
@@ -1937,33 +2053,34 @@ body {
 
 /* Contact Section */
 .contact {
-    padding: 100px 0 30px 0;
+    padding: 60px 0;
     background-color: var(--bg-secondary);
 }
 
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    margin-top: 50px;
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .contact-form {
     background-color: rgb(39, 39, 39);
-    padding: 40px;
+    padding: 30px;
     border-radius: 10px;
+    height: fit-content;
 }
 
 .map-container {
     background-color: var(--bg-primary);
-    padding: 40px;
-    height: 100%;
+    padding: 30px;
+    height: fit-content;
 }
 
 .map-container iframe {
     width: 100%;
     height: 100%;
-    min-height: 500px;
+    min-height: 380px;
     border: none;
 }
 
@@ -2004,10 +2121,45 @@ body {
     }
 }
 
-/* Careers Section Styles */
+/* Careers Section */
 .careers {
-    padding: 30px 0;
-    background-color: var(--primary-color);
+    padding: 50px 0 50px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.careers .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Hide video background in dark theme for careers */
+:root[data-theme="dark"] .careers .video-background {
+    display: none;
+}
+
+:root[data-theme="light"] .careers .video-background {
+    display: none;
+}
+
+.careers .video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.careers .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
 }
 
 .careers .section-header {
@@ -2329,4 +2481,22 @@ body {
 .toast-message {
     font-size: 14px;
     font-weight: 500;
+}
+
+/* Ensure content stays above video */
+.projects .container,
+.careers .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Light theme specific styles for careers section */
+:root[data-theme="light"] .careers .section-header h2,
+:root[data-theme="light"] .careers .section-header p,
+:root[data-theme="light"] .careers .careers-benefits h3 {
+    color: #ffffff;
+}
+
+.team .section-title {
+    margin-bottom: 10px;
 } 
