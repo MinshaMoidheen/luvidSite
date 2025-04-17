@@ -343,6 +343,30 @@
             display: none;
             z-index: 1000;
             animation: slideInFromTop 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .toast.show {
+            display: flex;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .toast-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toast-icon {
+            font-size: 20px;
+        }
+
+        .toast-message {
+            font-size: 14px;
+            font-weight: 500;
         }
 
         /* Light Theme Toast */
@@ -373,7 +397,12 @@
 </head>
 <body>
     <!-- Toast Container -->
-    <div id="toast" class="toast"></div>
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar">
@@ -497,13 +526,28 @@
 
     <script>
         // Toast functionality
-        function showToast(message, duration = 3000) {
+        function showToast(message, type = 'success', duration = 3000) {
             const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.style.display = 'block';
+            const toastIcon = toast.querySelector('.toast-icon');
+            const toastMessage = toast.querySelector('.toast-message');
+            
+            // Reset any previous classes
+            toastIcon.className = 'toast-icon';
+            
+            // Set icon based on type
+            if (type === 'success') {
+                toastIcon.classList.add('fas', 'fa-check-circle');
+                toastIcon.style.color = '#4CAF50';
+            } else if (type === 'warning') {
+                toastIcon.classList.add('fas', 'fa-exclamation-triangle');
+                toastIcon.style.color = '#FFC107';
+            }
+            
+            toastMessage.textContent = message;
+            toast.classList.add('show');
             
             setTimeout(() => {
-                toast.style.display = 'none';
+                toast.classList.remove('show');
             }, duration);
         }
 
@@ -648,7 +692,7 @@
             const selectedDate = document.querySelector('.calendar-day.selected');
             
             if (!selectedDate || selectedDate.classList.contains('disabled')) {
-                showToast('Please select a valid date before proceeding.');
+                showToast('Please select a valid date before proceeding.', 'warning');
                 return;
             }
             
@@ -665,7 +709,50 @@
             document.getElementById('scheduleForm').style.display = 'none';
         }
 
+        function validateForm() {
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('workEmail').value.trim();
+            const phone = document.getElementById('phoneNumber').value.trim();
+            const privacyPolicy = document.getElementById('privacyPolicy').checked;
+            
+            if (!name) {
+                showToast('Please enter your name', 'warning');
+                return false;
+            }
+            
+            if (!email) {
+                showToast('Please enter your email', 'warning');
+                return false;
+            }
+            
+            if (!isValidEmail(email)) {
+                showToast('Please enter a valid email address', 'warning');
+                return false;
+            }
+            
+            if (!phone) {
+                showToast('Please enter your phone number', 'warning');
+                return false;
+            }
+            
+            if (!privacyPolicy) {
+                showToast('Please agree to the privacy policy', 'warning');
+                return false;
+            }
+            
+            return true;
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
         function submitForm() {
+            if (!validateForm()) {
+                return;
+            }
+            
             // Get all form values
             const formData = {
                 name: document.getElementById('fullName').value,
@@ -675,15 +762,14 @@
                 selectedDate: `${yearSelect.value}-${parseInt(monthSelect.value) + 1}-${document.querySelector('.calendar-day.selected').textContent}`
             };
 
-            // Validate form
-            if (!formData.name || !formData.email || !formData.phone) {
-                showToast('Please fill in all required fields.');
-                return;
-            }
-
             // Log form data (replace with your form submission logic)
             console.log('Form Data:', formData);
-            showToast('Form submitted successfully!');
+            showToast('Meeting scheduled successfully!', 'success');
+            
+            // Redirect to index.html after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
         }
     </script>
     <script src="script.js"></script>
