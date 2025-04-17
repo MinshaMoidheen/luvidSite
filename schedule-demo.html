@@ -16,6 +16,56 @@
             position: relative !important;
         }
 
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+        }
+
+        .cursor-follower {
+            width: 8px;
+            height: 8px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.1s ease;
+        }
+
+        /* Light theme cursor colors */
+        :root[data-theme="light"] .cursor,
+        :root[data-theme="light"] .cursor-follower {
+            background-color: #000000;
+        }
+
+        /* Dark theme cursor colors */
+        :root[data-theme="dark"] .cursor,
+        :root[data-theme="dark"] .cursor-follower {
+            background-color: #ffffff;
+        }
+
+        /* Override default cursor styles */
+        .calendar-nav button,
+        .calendar-day,
+        .calendar-selects select,
+        .schedule-next-btn,
+        .back-button,
+        .form-group input,
+        .form-group select,
+        .form-check-input,
+        .phone-input select,
+        .phone-input input,
+        .checkbox-group input[type="checkbox"] {
+            cursor: none !important;
+        }
+
         /* Schedule Demo Page Specific Styles */
         .schedule-demo-container {
             display: grid;
@@ -771,6 +821,34 @@
                 window.location.href = 'index.html';
             }, 2000);
         }
+
+        // Custom cursor
+        const cursor = document.createElement('div');
+        const cursorFollower = document.createElement('div');
+        cursor.classList.add('cursor');
+        cursorFollower.classList.add('cursor-follower');
+        document.body.appendChild(cursor);
+        document.body.appendChild(cursorFollower);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 50);
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'scale(0.8)';
+            cursorFollower.style.transform = 'scale(0.8)';
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'scale(1)';
+            cursorFollower.style.transform = 'scale(1)';
+        });
     </script>
     <script src="script.js"></script>
 </body>

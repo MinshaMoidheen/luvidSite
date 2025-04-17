@@ -565,4 +565,32 @@ function animateTestimonialsTitle() {
 window.addEventListener('scroll', animateTestimonialsTitle);
 
 // Initial check in case the section is already in view
-animateTestimonialsTitle(); 
+animateTestimonialsTitle();
+
+// Custom Cursor
+const cursor = document.createElement('div');
+const cursorFollower = document.createElement('div');
+cursor.classList.add('cursor');
+cursorFollower.classList.add('cursor-follower');
+document.body.appendChild(cursor);
+document.body.appendChild(cursorFollower);
+
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    
+    setTimeout(() => {
+        cursorFollower.style.left = e.clientX + 'px';
+        cursorFollower.style.top = e.clientY + 'px';
+    }, 100);
+});
+
+document.addEventListener('mousedown', () => {
+    cursor.style.transform = 'scale(0.8)';
+    cursorFollower.style.transform = 'scale(0.8)';
+});
+
+document.addEventListener('mouseup', () => {
+    cursor.style.transform = 'scale(1)';
+    cursorFollower.style.transform = 'scale(1)';
+}); 
