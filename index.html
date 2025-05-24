@@ -149,30 +149,6 @@
                     <div class="brand-item">
                         <a href="#"><img src="./assets/images/kafka.png" alt="Kafka" class="img-fluid" style="height: 120px;width: 200px;"></a>
                     </div>
-                    <div class="brand-item">
-                        <a href="#"><img src="./assets/images/mongodb.png" alt="MongoDB"></a>
-                    </div>
-                    <div class="brand-item">
-                        <a href="#"><img src="./assets/images/postgres.png" alt="PostgreSQL" class="img-fluid" style="height: 120px;width: 180px;"></a>
-                    </div>
-                    <div class="brand-item">
-                        <a href="#"><img src="./assets/images/react.png" alt="React" class="img-fluid" style="height: 120px;width: 160px;"></a>
-                    </div>
-                    <div class="brand-item">
-                        <a href="#"><img src="./assets/images/reactnative.png" alt="React Native" class="img-fluid" style="height: 120px;width: 160px;"></a>
-                    </div>
-                    <div class="brand-item">
-                        <a href="#"><img src="./assets/images/nodejs.png" alt="Node.js" class="img-fluid" style="height: 120px;width: 160px;"></a>
-                    </div>
-                    <div class="brand-item">
-                        <a href="#"><img src="./assets/images/next.png" alt="Next.js" class="img-fluid" style="height: 120px;width: 160px;"></a>
-                    </div>
-                    <div class="brand-item">
-                        <a href="#"><img src="./assets/images/express.png" alt="Express.js" class="img-fluid" style="height: 120px;width: 160px;"></a>
-                    </div>
-                    <div class="brand-item">
-                        <a href="#"><img src="./assets/images/kafka.png" alt="Kafka" class="img-fluid" style="height: 120px;width: 200px;"></a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -229,7 +205,7 @@
             </div>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="./assets/images/image.webp" alt="Mistudiu">
+                    <img src="./assets/images/mistu.png" alt="Mistudiu">
                     <div class="project-overlay">
                         <h3>Mistudiu</h3>
                         <p>An innovative educational platform designed to enhance learning experiences through interactive content and personalized study paths.</p>
@@ -257,14 +233,14 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="./assets/images/image.webp" alt="Oneform">
+                    <img src="./assets/images/oneform.png" alt="Oneform">
                     <div class="project-overlay">
                         <h3>Oneform</h3>
                         <p>A unified form management system that simplifies data collection and processing across multiple departments.</p>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="./assets/images/image.webp" alt="Otogadgets">
+                    <img src="./assets/images/oto.png" alt="Otogadgets">
                     <div class="project-overlay">
                         <h3>Otogadgets</h3>
                         <p>An e-commerce platform specializing in automotive gadgets and accessories with advanced search and recommendation features.</p>
@@ -699,6 +675,20 @@
         animation: fadeInUp 1s ease 0.6s;
         opacity: 0;
         animation-fill-mode: forwards;
+    }
+
+    /* Project card image styles */
+    .project-card {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .project-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
     }
 
     @keyframes fadeInUp {
