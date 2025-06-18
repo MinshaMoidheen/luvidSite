@@ -262,6 +262,14 @@
                         <p>A retail management platform that optimizes inventory, sales, and customer engagement for modern retail businesses.</p>
                     </div>
                 </div>
+
+                <div class="project-card">
+                    <img src="./assets/images/hrms.png" alt="Mistudiu">
+                    <div class="project-overlay">
+                        <h3>HRMS</h3>
+                        <p>An innovative educational platform designed to enhance learning experiences through interactive content and personalized study paths.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -706,6 +714,36 @@
         object-fit: cover;
         display: block;
     }
+     .cursor {
+            width: 20px;
+            height: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+            display: none; /* Hide by default */
+        }
+
+        .cursor-follower {
+            width: 8px;
+            height: 8px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.1s ease;
+            display: none; /* Hide by default */
+        }
+
+        /* Show cursor only on non-touch devices */
+        @media (hover: hover) and (pointer: fine) {
+            .cursor, .cursor-follower {
+                display: block;
+            }
+        }
 
     @keyframes fadeInUp {
         from {
@@ -733,3 +771,33 @@
         }
     }
 </style>
+
+<script>
+     // Custom cursor
+        const cursor = document.createElement('div');
+        const cursorFollower = document.createElement('div');
+        cursor.classList.add('cursor');
+        cursorFollower.classList.add('cursor-follower');
+        document.body.appendChild(cursor);
+        document.body.appendChild(cursorFollower);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 50);
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'scale(0.8)';
+            cursorFollower.style.transform = 'scale(0.8)';
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'scale(1)';
+            cursorFollower.style.transform = 'scale(1)';
+        });
+</script>

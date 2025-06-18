@@ -2507,7 +2507,7 @@ body {
 }
 
 /* Custom Cursor */
-.cursor {
+/* .cursor {
     width: 20px;
     height: 20px;
     background-color: var(--secondary-color);
@@ -2527,7 +2527,7 @@ body {
     pointer-events: none;
     z-index: 9998;
     transition: transform 0.1s ease;
-}
+} */
 
 /* Light theme cursor colors */
 :root[data-theme="light"] .cursor,
